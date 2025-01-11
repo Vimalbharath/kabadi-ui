@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import Loading from './components/Loading'
-import Tours from './components/Players'
+import Players from './components/Players'
 // import axios from 'axios';
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
@@ -30,7 +30,9 @@ function App() {
     fetchTours();
   },[]);
 
-return (<h4>Hello Vimalbharath</h4>); 
+return (<div>Hello Vimalbharath
+<Players tours={tours}/>
+</div>); 
 }
 // function App(){
 //   console.log('vimal');

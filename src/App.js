@@ -30,11 +30,13 @@ function App() {
     fetchTours();
   },[]);
 
-return (<div>Hello Vimalbharath
+return (<div  >Hello Vimalbharath
+
 <Players tours={tours}/>
 </div>); 
 }
 // function App(){
+//style={{backgroundColor:'antiquewhite'}}
 //   console.log('vimal');
 //  return (<h4>Hello Vimalbharath</h4>); 
 // }

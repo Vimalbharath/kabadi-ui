@@ -1,13 +1,58 @@
+*{
+   border: 0;
+   margin:0;
+
+}
+
+body{
+   background-color: antiquewhite;
+}
+
+.player-cont{
+   background-color: antiquewhite;
+   align-items: center;
+   padding: 1px;
+   font-size: 1rem;
+}
+
 .player-card {
-   border: 1px solid #ccc;
+ 
+  position: relative;
+  max-width: 90vw;
+   background-color:white;
+   border: 1px solid #f10a0a;
    padding: 1rem;
-   margin: 1rem;
+   margin: auto;
    border-radius: 5px;
 }
 
 .player-image {
-   width: 150px;
-   height: 150px;
+   float:right;
+   width: 5em;
+   height: 5em;
    border-radius: 50%;
+   /* position: absolute;
    margin-bottom: 1rem;
+   margin-top: 1rem;
+   right: 1rem; */
 }
+
+.player-id {
+  background-color: aqua;
+float: left;
+   /* width: 1.5em;
+   height: 1.5em; */
+   border-radius: 50%;
+   /* align-items: center; */
+   text-align: center;
+   border-color: #f10a0a;
+border: 1px solid #f10a0a;
+  padding: .2rem;
+  
+}
+
+/* @media  screen and (min-width: 600px) {
+   .player-card {
+      background-color: lightblue;
+   }
+} */

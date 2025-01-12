@@ -28,7 +28,7 @@ const Matches = () => {
     </div>
       <div>
         {matches.map((match)=>{
-        return <SingleMatch key={match.matchid}{...match}></SingleMatch>
+        return <SingleMatch key={match.matchid}{...match}handlegetallmatches={handlegetallmatches}></SingleMatch>
         }
         )}
       </div>

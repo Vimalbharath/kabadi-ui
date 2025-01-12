@@ -60,7 +60,7 @@ const Players = () => {
     </div>
       <div>
         {tours.map((tour)=>{
-        return <Player key={tour.playerid}{...tour}></Player>
+        return <Player key={tour.playerid}{...tour} handlegetallplayers={handlegetallplayers}></Player>
         }
         )}
       </div>

@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { config } from '../Constants'
-
+// import { useParams, Link } from 'react-router-dom'
 export const api = {
+  
 //   authenticate,
 //   signup,
 //   numberOfUsers,
@@ -13,8 +14,9 @@ export const api = {
 //   addBook
 getallplayers,
 getallteams,
-getallmatches
+getallmatches,deleteplayer,deletematch
 }
+
 
 // function authenticate(username, password) {
 //   return instance.post('/auth/authenticate', { username, password }, {
@@ -37,6 +39,14 @@ function getallteams() {
 }
 function getallmatches() {
   return instance.get('/matchs')
+}
+function deleteplayer(playerid) {
+  // const { playerid } = useParams();
+  return instance.delete(`/deleteplayer/${playerid} `)
+}
+function deletematch(matchid) {
+  // const { playerid } = useParams();
+  return instance.delete(`/deletematch/${matchid} `)
 }
 
 // function getUsers(user, username) {

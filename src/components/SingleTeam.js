@@ -34,22 +34,24 @@ const SingleTeam = () => {
      <h2> {captain}</h2>
      <h2> {number}</h2>
      <h2> {village}</h2>
-          <h2>Players for {selectedTeam.name}</h2>
-           <h2> ={players.length}</h2>
-          {/* {players.length > 0 ? (
-            <ul>
-              {players.map((player) => (
-                <li key={player.playerid}>
-                  <p>
-                    {player.name}
-                  </p>
-                  <Player key={player.playerid}{...player} ></Player>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No Players Found</p>
-          )} */}
+          {selectedTeam.players && selectedTeam.players.length > 0 && ( // Check if players exist and have elements
+        <h2>Players for {selectedTeam.name}</h2>
+      )}
+
+      {selectedTeam.players && selectedTeam.players.length > 0 && ( // Check again before rendering
+        <ul>
+          {selectedTeam.players.map((player) => (
+            <li key={player.playerid}>
+              <p>{player.name}</p>
+              <Player key={player.playerid} {...player} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {selectedTeam.players && selectedTeam.players.length === 0 && ( // Show message if no players
+        <p>No Players Found</p>
+      )}
         </div>
 
          );

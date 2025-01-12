@@ -1,44 +1,31 @@
 import './App.css';
-import React, { useState, useEffect } from 'react'
-import Loading from './components/Loading'
+import React from 'react'
 import Players from './components/Players'
-// import axios from 'axios';
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
-const url = 'http://localhost:8080/players'
+import Teams from './components/Teams'
+import Matches from './components/Matches';
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Error from './components/Error';
+import { BrowserRouter as Route,Router,Navigate,Routes } from 'react-router-dom';
 function App() {
-  const [loading,setLoading]=useState(true);
-  const [tours,setTours]=useState([]);
-  // const removeTour=(id)=>{
-  //   const newTours=tours.filter((tour)=>tour.id!==id);
-  //   setTours(newTours);
-  // }
-
-  const fetchTours=async () => {
-  try {
-  const response=await fetch(url); 
-  console.log(response);
-  const tours=await response.json();
-  console.log(tours);
-  setLoading(false);
-  setTours(tours);
-  } catch(error){
-   console.log(error);
-  }
-};
-  useEffect(()=>{
-    fetchTours();
-  },[]);
-
-return (<div  >Hello Vimalbharath
-
-<Players tours={tours}/>
-</div>); 
+  return (
+    
+   <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
+          <Route path='players' element={<Players />} />
+          <Route path='teams' element={<Teams />} />
+          <Route path='matches' element={<Matches />} />
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path='*' element={<Error />} />
+        </Routes>
+    </Router>
+  );
 }
-// function App(){
-//style={{backgroundColor:'antiquewhite'}}
-//   console.log('vimal');
-//  return (<h4>Hello Vimalbharath</h4>); 
-// }
 
 export default App;

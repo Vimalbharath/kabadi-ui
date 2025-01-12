@@ -12,7 +12,8 @@ export const api = {
 //   deleteBook,
 //   addBook
 getallplayers,
-getallteams
+getallteams,
+getallmatches
 }
 
 // function authenticate(username, password) {
@@ -33,6 +34,9 @@ function getallplayers() {
 
 function getallteams() {
   return instance.get('/teams')
+}
+function getallmatches() {
+  return instance.get('/matchs')
 }
 
 // function getUsers(user, username) {

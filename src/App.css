@@ -50,6 +50,14 @@ border: 1px solid #f10a0a;
   padding: .2rem;
   
 }
+.match-card {
+   border: 1px solid #ccc;
+   padding: 1rem;
+   margin: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   /* Add cursor: pointer for better user experience */
+}
 
 /* @media  screen and (min-width: 600px) {
    .player-card {

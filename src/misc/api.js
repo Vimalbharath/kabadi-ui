@@ -13,7 +13,7 @@ export const api = {
 //   deleteBook,
 //   addBook
 getallplayers,
-getallteams,
+getallteams,getteam,
 getallmatches,deleteplayer,deletematch
 }
 
@@ -36,6 +36,9 @@ function getallplayers() {
 
 function getallteams() {
   return instance.get('/teams')
+}
+function getteam(teamid) {
+  return instance.get(`/team/${teamid}`)
 }
 function getallmatches() {
   return instance.get('/matchs')

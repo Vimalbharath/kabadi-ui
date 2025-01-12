@@ -8,6 +8,7 @@ import Signup from './components/Signup'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Error from './components/Error';
+import SingleTeam from './components/SingleTeam';
 import { BrowserRouter as Router,Routes,Navigate,Route} from 'react-router-dom';
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='players' element={<Players />} />
           <Route path='teams' element={<Teams />} />
           <Route path='matches' element={<Matches />} />
+          <Route path='team/:teamid' element={<SingleTeam />} />
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
           <Route path='*' element={<Error />} />
         </Routes>

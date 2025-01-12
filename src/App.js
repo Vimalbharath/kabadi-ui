@@ -8,7 +8,7 @@ import Signup from './components/Signup'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Error from './components/Error';
-import { BrowserRouter as Route,Router,Navigate,Routes } from 'react-router-dom';
+import { BrowserRouter as Router,Routes,Navigate,Route} from 'react-router-dom';
 function App() {
   return (
     

@@ -2,8 +2,11 @@ import React from 'react';
 import SingleMatch from './SingleMatch';
 import { useState,useEffect } from 'react';
 import { api } from '../misc/api'
+import AddMatch from '../modal/AddMatch';
+import { useGlobalContext } from '../modal/context';
 
 const Matches = () => {
+  const {  openAddMatches } = useGlobalContext();
  const [matches,setMatches]=useState([]);
 
   const handlegetallmatches = async () => {
@@ -24,7 +27,10 @@ const Matches = () => {
   <section>
     <div >
       <h2>Matches</h2>
-      
+       {/* <AddMatch/>
+       <button onClick={openAddMatches} className='btn'>
+        Add Match
+      </button> */}
     </div>
       <div>
         {matches.map((match)=>{

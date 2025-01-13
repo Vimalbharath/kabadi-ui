@@ -4,9 +4,10 @@ import { useState,useEffect } from 'react';
 import { api } from '../misc/api'
 import { useGlobalContext } from '../modal/context';
 import Modal from '../modal/Modal';
+import AddMatch from '../modal/AddMatch';
 
 const Teams = () => {
-const {  openModal } = useGlobalContext();
+const {  openModal,openAddMatches } = useGlobalContext();
 
   const [teams,setTeams]=useState([]);
 
@@ -28,6 +29,12 @@ const {  openModal } = useGlobalContext();
   <section>
     <div >
       <h2>Teams</h2>
+      <AddMatch teams={teams}/>
+     
+       <button onClick={openAddMatches} className='btn'>
+        Add Match
+      </button>
+      {console.log(teams)}
       <Modal/>
        <button onClick={openModal} className='btn'>
         Add Team

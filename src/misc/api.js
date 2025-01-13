@@ -13,7 +13,7 @@ export const api = {
 //   deleteBook,
 //   addBook
 getallplayers,
-getallteams,getteam,addTeam,addPlayer,
+getallteams,getteam,addTeam,addPlayer,addMatch,
 getallmatches,deleteplayer,deletematch
 }
 
@@ -46,6 +46,11 @@ function getallmatches() {
 
 function addTeam(team) {
   return instance.post('/team', team, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
+function addMatch(match,team1id,team2id) {
+  return instance.post(`match/${team1id}/${team2id}`, match, {
     headers: { 'Content-type': 'application/json' }
   })
 }

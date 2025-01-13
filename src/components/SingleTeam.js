@@ -2,9 +2,12 @@ import React, { useState,useEffect } from 'react';
 import { useParams,Link } from 'react-router-dom'
 import { api } from '../misc/api'
 import Player from './Player';
+import { useGlobalContext } from '../modal/context';
+import AddPlayer from '../modal/AddPlayer';
 
 
 const SingleTeam = () => {
+  const {  openAddPlayer } = useGlobalContext();
     const { teamid } = useParams();
     const [selectedTeam,setTeams]=useState([]);
 
@@ -34,6 +37,10 @@ const SingleTeam = () => {
      <h2> {captain}</h2>
      <h2> {number}</h2>
      <h2> {village}</h2>
+      <AddPlayer/>
+       <button onClick={openAddPlayer} className='btn'>
+        Add Player
+      </button>
           {selectedTeam.players && selectedTeam.players.length > 0 && ( // Check if players exist and have elements
         <h2>Players for {selectedTeam.name}</h2>
       )}

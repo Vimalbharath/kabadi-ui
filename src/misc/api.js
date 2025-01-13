@@ -13,7 +13,7 @@ export const api = {
 //   deleteBook,
 //   addBook
 getallplayers,
-getallteams,getteam,
+getallteams,getteam,addTeam,addPlayer,
 getallmatches,deleteplayer,deletematch
 }
 
@@ -43,6 +43,20 @@ function getteam(teamid) {
 function getallmatches() {
   return instance.get('/matchs')
 }
+
+function addTeam(team) {
+  return instance.post('/team', team, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
+function addPlayer(player,teamid) {
+  return instance.post(`player/${teamid}`, player, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
+
+
+
 function deleteplayer(playerid) {
   // const { playerid } = useParams();
   return instance.delete(`/deleteplayer/${playerid} `)

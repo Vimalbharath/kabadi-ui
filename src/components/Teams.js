@@ -2,8 +2,11 @@ import React from 'react';
 import Team from './Team';
 import { useState,useEffect } from 'react';
 import { api } from '../misc/api'
-const Teams = () => {
+import { useGlobalContext } from '../modal/context';
+import Modal from '../modal/Modal';
 
+const Teams = () => {
+const {  openModal } = useGlobalContext();
 
   const [teams,setTeams]=useState([]);
 
@@ -25,7 +28,10 @@ const Teams = () => {
   <section>
     <div >
       <h2>Teams</h2>
-      
+      <Modal/>
+       <button onClick={openModal} className='btn'>
+        Add Team
+      </button>
     </div>
       <div>
         {teams.map((team)=>{

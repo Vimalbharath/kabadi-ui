@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom/client';
 import App from './App';
+import { AppProvider } from './modal/context';
 import { BrowserRouter } from 'react-router-dom';
 //import { createRoot } from 'react-dom/client';
 // const container = document.getElementById('root');
@@ -12,8 +13,8 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDom.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
-    <App />
-    
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 );

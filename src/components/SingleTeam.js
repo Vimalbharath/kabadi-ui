@@ -10,7 +10,21 @@ const SingleTeam = () => {
   const {  openAddPlayer } = useGlobalContext();
     const { teamid } = useParams();
     const [selectedTeam,setTeams]=useState([]);
-
+  const handledeleteteam = async () => {
+    try {
+     
+      const response = await api.deleteteam(teamid);
+      // console.log(response.data);
+      //  setTours(response.data)
+      console.log('deleted')
+      handlegetteam();
+    } catch (error) {
+      console.log('error')
+      // handleLogError(error)
+    } finally {
+      // setIsBooksLoading(false)
+    }
+  }
   const handlegetteam = async () => {
     try {
       const response = await api.getteam(teamid);
@@ -32,6 +46,8 @@ const SingleTeam = () => {
 
 
  <div>
+   <button type="button" className='btn'onClick={() => alert(`Attempted to Delete ${name} : ID ${teamid}`, handledeleteteam(teamid))
+    }>Delete Team</button>
   <h2> {teamid}</h2>   
      <h2> {name}</h2>
      <h2> {captain}</h2>

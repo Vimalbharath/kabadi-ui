@@ -14,7 +14,7 @@ export const api = {
 //   addBook
 getallplayers,
 getallteams,getteam,addTeam,addPlayer,addMatch,
-getallmatches,deleteplayer,deletematch
+getallmatches,deleteplayer,deletematch,deleteteam
 }
 
 
@@ -65,6 +65,10 @@ function addPlayer(player,teamid) {
 function deleteplayer(playerid) {
   // const { playerid } = useParams();
   return instance.delete(`/deleteplayer/${playerid} `)
+}
+function deleteteam(teamid) {
+  // const { playerid } = useParams();
+  return instance.delete(`/deleteteam/${teamid} `)
 }
 function deletematch(matchid) {
   // const { playerid } = useParams();

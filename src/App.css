@@ -176,3 +176,60 @@ Modal
    color: var(--clr-black);
    background: transparent;
 }
+
+.teams-container {
+   padding: 20px;
+   margin: 0 auto;
+   /* Center horizontally */
+   max-width: 700px;
+   /* Adjust for larger screens */
+}
+
+.teams-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.teams-header h2 {
+   font-size: 24px;
+   margin: 0;
+}
+
+.add-buttons {
+   display: flex;
+   gap: 10px;
+}
+
+.tbtn {
+   padding: 10px 20px;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+.teams-list {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 20px;
+}
+
+/* Mobile-specific styles (optional) */
+@media only screen and (max-width: 768px) {
+   .teams-container {
+      padding: 10px;
+   }
+
+   .teams-header h2 {
+      font-size: 20px;
+   }
+
+   .tbtn {
+      font-size: 14px;
+   }
+
+   .teams-list {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   }
+}

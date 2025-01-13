@@ -32,7 +32,8 @@ const AddPlayer = () => {
 
       const response = await api.addPlayer(newPlayerData,teamid); 
       console.log('Player added successfully:', response.data);
-      navigate(`/teams/${teamid}`); // Redirect to the specific team page
+      closeAddPlayer()
+      navigate(`/team/${teamid}`); // Redirect to the specific team page
     } catch (error) {
       console.error('Error adding player:', error);
       // Handle error, e.g., display an error message to the user
@@ -41,10 +42,10 @@ const AddPlayer = () => {
   return (
     <div
       className={`${
-        isAddPlayerOpen ? 'Modal-overlay show-Modal' : 'Modal-overlay'
+        isAddPlayerOpen ? 'modal-overlay show-modal' : 'modal-overlay'
       }`}
     >
-      <div className='Modal-container'>
+      <div className='modal-container'>
         <h3>Add New Player</h3>
         <div>
       
@@ -107,7 +108,7 @@ const AddPlayer = () => {
         <button type="submit">Add Player</button>
       </form>
     </div>
-        <button className='close-Modal-btn' onClick={closeAddPlayer}>
+        <button className='close-modal-btn' onClick={closeAddPlayer}>
           {/* <FaTimes></FaTimes> */}
           X
         </button>

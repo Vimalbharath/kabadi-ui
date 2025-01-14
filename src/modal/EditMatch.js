@@ -36,7 +36,7 @@ const EditMatch = ({matchid}) => {
  return (
     <div
       className={`${
-        isEditMatchesOpen && isEditOpen ? 'modal-overlay show-modal' : 'modal-overlay'
+        isEditMatchesOpen && isEditOpen ? 'mmodal-overlay show-modal' : 'modal-overlay'
       }`}
     > <div className='modal-container'>
       <h2>Edit Match</h2>

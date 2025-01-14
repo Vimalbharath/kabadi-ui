@@ -47,7 +47,7 @@ const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, t
        <button className='btn' type="button" onClick={() => alert(`Deleted ID ${matchid}`,
         handledeletematch(matchid))
     }>Delete</button>
-        <EditMatch />
+        <EditMatch matchid={matchid}/>
      
        <button onClick={openEditMatches} className='btn'>
         Edit Match

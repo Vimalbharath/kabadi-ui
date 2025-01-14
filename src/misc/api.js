@@ -15,7 +15,7 @@ export const api = {
 getallplayers,
 getallteams,getteam,addTeam,addPlayer,addMatch,
 getallmatches,deleteplayer,deletematch,deleteteam,
-getplayer,getmatch
+getplayer,getmatch,updateMatch
 }
 
 
@@ -67,7 +67,11 @@ function addPlayer(player,teamid) {
     headers: { 'Content-type': 'application/json' }
   })
 }
-
+function updateMatch(match,matchid) {
+  return instance.put(`updatematch/${matchid}`, match, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
 
 
 function deleteplayer(playerid) {

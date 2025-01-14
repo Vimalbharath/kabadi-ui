@@ -158,7 +158,7 @@ Modal
 
 .btn {
    text-transform: uppercase;
-   background: var(--clr-black);
+   background: var(--clr-red-light);
    color: var(--clr-white);
    padding: 0.375rem 0.75rem;
    letter-spacing: var(--spacing);
@@ -177,12 +177,12 @@ Modal
    background: transparent;
 }
 
-.teams-container {
+/* .teams-container {
    padding: 20px;
    margin: 0 auto;
-   /* Center horizontally */
+
    max-width: 700px;
-   /* Adjust for larger screens */
+  
 }
 
 .teams-header {
@@ -215,7 +215,7 @@ Modal
    gap: 20px;
 }
 
-/* Mobile-specific styles (optional) */
+
 @media only screen and (max-width: 768px) {
    .teams-container {
       padding: 10px;
@@ -232,4 +232,67 @@ Modal
    .teams-list {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
    }
+} */
+
+.teams-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 20px;
+   background-color: #f5f5f5;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.teams-header {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+.actions {
+   display: flex;
+   gap: 10px;
+}
+
+.add-match-btn,
+.add-team-btn {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 3px;
+   cursor: pointer;
+}
+
+.add-match-btn {
+   background-color: #4CAF50;
+   color: white;
+}
+
+.add-team-btn {
+   background-color: #3f51b5;
+   color: white;
+}
+
+.team-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 20px;
+}
+.team-card {
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+   text-align: center;
+   /* Center text within the card */
+   margin: 10px;
+   /* Add some spacing between cards */
+   transition: transform 0.2s ease-in-out;
+}
+
+.team-card:hover {
+   transform: scale(1.05);
+   /* Slight hover effect */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

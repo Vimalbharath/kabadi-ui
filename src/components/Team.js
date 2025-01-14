@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
-import { api } from '../misc/api'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css'; // Import the CSS file
 
-const Team = ({  teamid,name }) => {
-  
+const Team = ({ teamid, name }) => {
   return (
-    <Link to={`/team/${teamid}`} >
-          <div onClick={()=>console.log(teamid)}>
-        <div>{teamid}</div>
-        <h2>{name}</h2>
-    </div>
-        </Link>
-    
+    <Link to={`/team/${teamid}`} className="team-card"> 
+      <div>
+        <h3>{name}</h3> 
+      </div>
+    </Link>
   );
 };
 

@@ -6,7 +6,7 @@ import { Button } from 'bootstrap';
 
 
 const Player = ({ playerid, name, age, image, weight, address ,handlegetallplayers}) => {
- const path=process.env.PUBLIC_URL + `/images/${playerid}.jpg`
+ const path=process.env.PUBLIC_URL + `/images/${playerid}.jpeg`
 
   const handledeleteplayer = async () => {
     try {
@@ -23,15 +23,30 @@ const Player = ({ playerid, name, age, image, weight, address ,handlegetallplaye
       // setIsBooksLoading(false)
     }
   }
+  const handleupdateimage = async () => {
+    try {
+     
+      const response = await api.updateimage(playerid);
+      // console.log(response.data);
+      //  setTours(response.data)
+      console.log('image updated')
+      handlegetallplayers();
+    } catch (error) {
+      console.log('error')
+      // handleLogError(error)
+    } finally {
+      // setIsBooksLoading(false)
+    }
+  }
   // useEffect(() => {
   //   handledeleteplayer()
   // }, [])
   return (
     <div className='player-cont'>
-    <article className="player-card"> 
+    <article className="player-card" onClick={()=>handleupdateimage(playerid)}> 
      <img 
           src={image ? path : pic} 
-          alt={`${name}`} 
+          alt={`${playerid}`} 
           className="player-image" 
         />
       <div className='player-id'>

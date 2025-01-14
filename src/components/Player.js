@@ -38,7 +38,7 @@ const Player = ({ playerid, name, age, image, weight, address ,handlegetallplaye
       <p>Age: {age}</p>
       <p>Weight: {weight}</p>
       <p>Address: {address}</p>
-      <button type="button" onClick={() => alert(`Deleted ${name} : ID ${playerid}`, handledeleteplayer(playerid))
+      <button className='btn' type="button" onClick={() => alert(`Deleted ${name} : ID ${playerid}`, handledeleteplayer(playerid))
     }>Delete</button>
     </article>
     

@@ -1,8 +1,12 @@
 import React from 'react';
 import TeamCard from './TeamCard';
-import { api } from '../misc/api'
+import { api } from '../misc/api';
+import { useGlobalContext } from '../modal/context';
+import EditMatch from '../modal/EditMatch';
 
 const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, team2score ,handlegetallmatches}) => {
+
+  const {  openEditMatches } = useGlobalContext();
 
    const handledeletematch = async () => {
     try {
@@ -40,9 +44,14 @@ const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, t
         Score: {team1score} - {team2score}
       </p>
 
-       <button type="button" onClick={() => alert(`Deleted ID ${matchid}`,
+       <button className='btn' type="button" onClick={() => alert(`Deleted ID ${matchid}`,
         handledeletematch(matchid))
     }>Delete</button>
+        <EditMatch />
+     
+       <button onClick={openEditMatches} className='btn'>
+        Edit Match
+      </button>
     </div>
   );
 };

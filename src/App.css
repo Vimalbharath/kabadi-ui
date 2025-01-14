@@ -61,7 +61,7 @@ body{
 .player-card {
  
   position: relative;
-  max-width: 90vw;
+  max-width: 60vw;
    background-color:white;
    border: 1px solid #f10a0a;
    padding: 1rem;
@@ -71,9 +71,9 @@ body{
 
 .player-image {
    float:right;
-   width: 5em;
-   height: 5em;
-   border-radius: 50%;
+   width: 7em;
+   height: 7em;
+   border-radius: 5%;
    /* position: absolute;
    margin-bottom: 1rem;
    margin-top: 1rem;
@@ -177,122 +177,4 @@ Modal
    background: transparent;
 }
 
-/* .teams-container {
-   padding: 20px;
-   margin: 0 auto;
 
-   max-width: 700px;
-  
-}
-
-.teams-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-bottom: 20px;
-}
-
-.teams-header h2 {
-   font-size: 24px;
-   margin: 0;
-}
-
-.add-buttons {
-   display: flex;
-   gap: 10px;
-}
-
-.tbtn {
-   padding: 10px 20px;
-   border: 1px solid #ddd;
-   border-radius: 4px;
-   cursor: pointer;
-}
-
-.teams-list {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 20px;
-}
-
-
-@media only screen and (max-width: 768px) {
-   .teams-container {
-      padding: 10px;
-   }
-
-   .teams-header h2 {
-      font-size: 20px;
-   }
-
-   .tbtn {
-      font-size: 14px;
-   }
-
-   .teams-list {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-   }
-} */
-
-.teams-container {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 20px;
-   background-color: #f5f5f5;
-   border-radius: 5px;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.teams-header {
-   display: flex;
-   justify-content: space-between;
-   width: 100%;
-   margin-bottom: 20px;
-}
-
-.actions {
-   display: flex;
-   gap: 10px;
-}
-
-.add-match-btn,
-.add-team-btn {
-   padding: 10px 20px;
-   border: none;
-   border-radius: 3px;
-   cursor: pointer;
-}
-
-.add-match-btn {
-   background-color: #4CAF50;
-   color: white;
-}
-
-.add-team-btn {
-   background-color: #3f51b5;
-   color: white;
-}
-
-.team-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 20px;
-}
-.team-card {
-   padding: 20px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background-color: #f9f9f9;
-   text-align: center;
-   /* Center text within the card */
-   margin: 10px;
-   /* Add some spacing between cards */
-   transition: transform 0.2s ease-in-out;
-}
-
-.team-card:hover {
-   transform: scale(1.05);
-   /* Slight hover effect */
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}

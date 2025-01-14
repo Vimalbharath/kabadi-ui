@@ -25,27 +25,30 @@ const {  openModal,openAddMatches } = useGlobalContext();
   useEffect(() => {
     handlegetallteams()
   }, [])
-   return (
-    <section className="teams-container">
-      <div className="teams-header">
-        <h2>Teams</h2>
-        <div className="actions">
-          <button onClick={openAddMatches} className="btn add-match-btn">
-            Add Match
-          </button>
-          <button onClick={openModal} className="btn add-team-btn">
-            Add Team
-          </button>
-        </div>
+  return (
+  <section>
+    <div >
+      <h2>Teams</h2>
+      <AddMatch teams={teams}/>
+     
+       <button onClick={openAddMatches} className='btn'>
+        Add Match
+      </button>
+      {console.log(teams)}
+      <Modal/>
+       <button onClick={openModal} className='btn'>
+        Add Team
+      </button>
+    </div>
+      <div>
+        {teams.map((team)=>{
+        return <Team key={team.teamid}{...team}></Team>
+        }
+        )}
       </div>
-
-      <div className="team-grid">
-        {teams.map((team) => (
-          <Team key={team.teamid} {...team} />
-        ))}
-      </div>
-    </section>
+  </section>
   );
+
 };
 
 export default Teams;

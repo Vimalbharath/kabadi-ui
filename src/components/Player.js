@@ -1,11 +1,13 @@
 import React, { useState,useEffect } from 'react';
-import pic from '../images/Scarlet.jpg'
+import pic from '../images/default.png'
 import { api } from '../misc/api'
 import '../App.css';
 import { Button } from 'bootstrap';
 
 
 const Player = ({ playerid, name, age, image, weight, address ,handlegetallplayers}) => {
+ const path=process.env.PUBLIC_URL + `/images/${playerid}.jpg`
+
   const handledeleteplayer = async () => {
     try {
      
@@ -27,7 +29,11 @@ const Player = ({ playerid, name, age, image, weight, address ,handlegetallplaye
   return (
     <div className='player-cont'>
     <article className="player-card"> 
-      <img src={pic} alt={`${name}`} className="player-image" />
+     <img 
+          src={image ? path : pic} 
+          alt={`${name}`} 
+          className="player-image" 
+        />
       <div className='player-id'>
         <p>{playerid}</p>
        

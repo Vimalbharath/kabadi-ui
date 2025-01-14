@@ -1,12 +1,14 @@
 import React from 'react';
 import TeamCard from './TeamCard';
 import { api } from '../misc/api';
+import { useState } from 'react';
 import { useGlobalContext } from '../modal/context';
 import EditMatch from '../modal/EditMatch';
 
 const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, team2score ,handlegetallmatches}) => {
 
   const {  openEditMatches } = useGlobalContext();
+ 
 
    const handledeletematch = async () => {
     try {

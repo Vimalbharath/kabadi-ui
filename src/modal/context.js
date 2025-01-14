@@ -10,6 +10,14 @@ const AppProvider = ({ children }) => {
   const [isEditMatchesOpen, setIsEditMatchesOpen] = useState(false);
   const [isEditPlayerOpen, setIsEditPlayerOpen] = useState(false);
   const [isEditTeamOpen, setIsEditTeamOpen] = useState(false);
+   const [isEditOpen, setIsEditOpen] = useState(false); // New state variable
+
+  const openEdit = () => {
+    setIsEditOpen(true); // Open edit modal for this match
+  };
+    const closeEdit = () => {
+    setIsEditOpen(true); // Open edit modal for this match
+  };
 
 
   const openAddMatches = () => {
@@ -36,9 +44,11 @@ const AppProvider = ({ children }) => {
 
   const openEditMatches = () => {
     setIsEditMatchesOpen(true);
+    closeEdit();
   };
   const closeEditMatches = () => {
     setIsEditMatchesOpen(false);
+    openEdit();
   };
 
   const openEditPlayer = () => {
@@ -78,6 +88,7 @@ const AppProvider = ({ children }) => {
         closeEditPlayer,
         openEditTeam,
         closeEditTeam,
+        isEditOpen
 
       }}
     >

@@ -6,6 +6,7 @@ import { api } from '../misc/api';
 
 const EditMatch = ({matchid}) => {
  const navigate = useNavigate();
+   const {  isEditOpen } = useGlobalContext();
  const { isEditMatchesOpen, closeEditMatches } = useGlobalContext();
  const [matchData, setMatchData] = useState({
     team1score:'',
@@ -35,7 +36,7 @@ const EditMatch = ({matchid}) => {
  return (
     <div
       className={`${
-        isEditMatchesOpen ? 'modal-overlay show-modal' : 'modal-overlay'
+        isEditMatchesOpen && isEditOpen ? 'modal-overlay show-modal' : 'modal-overlay'
       }`}
     > <div className='modal-container'>
       <h2>Edit Match</h2>

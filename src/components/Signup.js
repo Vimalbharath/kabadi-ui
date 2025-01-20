@@ -1,131 +1,132 @@
-import React, { useState } from 'react'
-import { NavLink, Navigate } from 'react-router-dom'
-import { Button, Form, Grid, Segment, Message } from 'semantic-ui-react'
-import { useAuth } from '../AuthContext'
-import { bookApi } from '../misc/api'
-import { handleLogError } from '../misc/Helpers'
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext';
+import { api } from '../misc/api';
+import { handleLogError } from '../misc/Helpers';
 
-function Signup() {
+const Signup = () => {
   const Auth = useAuth()
-  const isLoggedIn = Auth.userIsAuthenticated()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(null); // Use a single state for error message
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [isError, setIsError] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  const navigate = useNavigate();
+  const { login } = useAuth(); // Assuming login function from AuthContext
 
-  const handleInputChange = (e, { name, value }) => {
-    if (name === 'username') {
-      setUsername(value)
-    } else if (name === 'password') {
-      setPassword(value)
-    } else if (name === 'name') {
-      setName(value)
-    } else if (name === 'email') {
-      setEmail(value)
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'username':
+        setUsername(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      default:
+        break;
     }
-  }
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    if (!(username && password && name && email)) {
-      setIsError(true)
-      setErrorMessage('Please, inform all fields!')
-      return
+    if (!username || !password || !name || !email) {
+      setError('Please fill in all fields.');
+      return;
     }
 
-    const user = { username, password, name, email }
+    const user = { username, password, name, email };
 
     try {
-      const response = await api.signup(user)
-      const { id, name, role } = response.data
+      const response = await api.signup(user);
+      const { id, name, role } = response.data;
       const authdata = window.btoa(username + ':' + password)
       const authenticatedUser = { id, name, role, authdata }
 
       Auth.userLogin(authenticatedUser)
-
-      setUsername('')
-      setPassword('')
-      setName('')
-      setEmail('')
-      setIsError(false)
-      setErrorMessage('')
+      navigate('/'); // Redirect to home page
     } catch (error) {
-      handleLogError(error)
+      handleLogError(error);
+      let errorMessage = 'Signup failed.';
       if (error.response && error.response.data) {
-        const errorData = error.response.data
-        let errorMessage = 'Invalid fields'
-        if (errorData.status === 409) {
-          errorMessage = errorData.message
-        } else if (errorData.status === 400) {
-          errorMessage = errorData.errors[0].defaultMessage
-        }
-        setIsError(true)
-        setErrorMessage(errorMessage)
+        const errorData = error.response.data;
+        errorMessage = errorData.message || errorMessage;
       }
+      setError(errorMessage);
     }
-  }
-
-  if (isLoggedIn) {
-    return <Navigate to='/' />
-  }
+  };
 
   return (
-    <Grid textAlign='center'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Form size='large' onSubmit={handleSubmit}>
-          <Segment>
-            <Form.Input
-              fluid
-              autoFocus
-              name='username'
-              icon='user'
-              iconPosition='left'
-              placeholder='Username'
-              value={username}
-              onChange={handleInputChange}
-            />
-            <Form.Input
-              fluid
-              name='password'
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='password'
-              value={password}
-              onChange={handleInputChange}
-            />
-            <Form.Input
-              fluid
-              name='name'
-              icon='address card'
-              iconPosition='left'
-              placeholder='Name'
-              value={name}
-              onChange={handleInputChange}
-            />
-            <Form.Input
-              fluid
-              name='email'
-              icon='at'
-              iconPosition='left'
-              placeholder='Email'
-              value={email}
-              onChange={handleInputChange}
-            />
-            <Button color='blue' fluid size='large'>Signup</Button>
-          </Segment>
-        </Form>
-        <Message>{`Already have an account? `}
-          <NavLink to="/login" color='teal'>Login</NavLink>
-        </Message>
-        {isError && <Message negative>{errorMessage}</Message>}
-      </Grid.Column>
-    </Grid>
-  )
-}
+    <div className="signup-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={handleInputChange}
+            placeholder="Enter Username"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={handleInputChange}
+            placeholder="Enter Name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+            placeholder="Enter Email"
+            required
+          />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      {error && <div className="error">{error}</div>}
+      <p>
+        Already have an account?{' '}
+        <NavLink to="/login" color="teal">
+          Login
+        </NavLink>
+      </p>
+    </div>
+  );
+};
 
 export default Signup;

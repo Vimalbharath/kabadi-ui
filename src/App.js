@@ -10,9 +10,10 @@ import Home from './components/Home';
 import Error from './components/Error';
 import SingleTeam from './components/SingleTeam';
 import { BrowserRouter as Router,Routes,Navigate,Route} from 'react-router-dom';
+import { AuthProvider } from './Context/AuthContext'
 function App() {
   return (
-    
+    <AuthProvider>
    <Router>
         <Navbar />
         <Routes>
@@ -27,6 +28,7 @@ function App() {
           <Route path='*' element={<Error />} />
         </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 

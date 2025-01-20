@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink, Navigate } from 'react-router-dom'
-import { Button, Form, Grid, Segment, Message } from 'semantic-ui-react'
-import { useAuth } from '../AuthContext'
-import { bookApi } from '../misc/api'
+//import { Button, Form, Grid, Segment, Message } from 'semantic-ui-react'
+import { useAuth } from '../Context/AuthContext'
+import { api } from '../misc/api'
 import { handleLogError } from '../misc/Helpers'
 
 function Login() {
@@ -13,11 +13,17 @@ function Login() {
   const [password, setPassword] = useState('')
   const [isError, setIsError] = useState(false)
 
-  const handleInputChange = (e, { name, value }) => {
-    if (name === 'username') {
-      setUsername(value)
-    } else if (name === 'password') {
-      setPassword(value)
+  const handleInputChange = (event) => {
+   const { name, value } = event.target;
+    switch (name) {
+      case 'username':
+        setUsername(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+       default:
+        break;
     }
   }
 
@@ -51,40 +57,39 @@ function Login() {
   }
 
   return (
-    <Grid textAlign='center'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Form size='large' onSubmit={handleSubmit}>
-          <Segment>
-            <Form.Input
-              fluid
-              autoFocus
-              name='username'
-              icon='user'
-              iconPosition='left'
-              placeholder='Username'
-              value={username}
-              onChange={handleInputChange}
-            />
-            <Form.Input
-              fluid
-              name='password'
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='password'
-              value={password}
-              onChange={handleInputChange}
-            />
-            <Button color='blue' fluid size='large'>Login</Button>
-          </Segment>
-        </Form>
-        <Message>{`Don't have already an account? `}
-          <NavLink to="/signup" as={NavLink} color='teal'>Sign Up</NavLink>
-        </Message>
-        {isError && <Message negative>The username or password provided are incorrect!</Message>}
-      </Grid.Column>
-    </Grid>
-  )
-}
+   <div className="login-container"> 
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            value={username} 
+            onChange={handleInputChange} 
+            placeholder="Enter Username" 
+            required 
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            value={password} 
+            onChange={handleInputChange} 
+            placeholder="Enter Password" 
+            required 
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      {isError && <div className="error">{isError}</div>} 
+      <p>Don't have an account? <NavLink to="/signup">Sign Up</NavLink></p>
+    </div>
+  );
+};
 
-export default Login
+export default Login;

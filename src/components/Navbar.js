@@ -1,10 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext'
 import '../Navbar.css'; // Import the CSS file
 
 function Navbar() {
+
+   const { getUser, userIsAuthenticated, userLogout } = useAuth()
+
+  const logout = () => {
+    userLogout()
+  }
+
+  const logoutMenuStyle = () => {
+    return userIsAuthenticated() ? { "display": "block" } : { "display": "none" }
+  }
+
+  const getUserName = () => {
+    const user = getUser()
+    return user ? user.name : ''
+  }
   return (
     <nav className="navbar">
+       <div header style={logoutMenuStyle()}>{`Hi ${getUserName()}`}</div>
+          <div as={Link} to="/" style={logoutMenuStyle()} onClick={logout}>Logout</div>
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/" className="nav-link">

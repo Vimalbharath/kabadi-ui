@@ -79,7 +79,7 @@ const AddPlayer = () => {
             id="image"
             name="image"
             value={playerData.image}
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </div>
         <div>

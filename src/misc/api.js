@@ -12,7 +12,7 @@ export const api = {
 //   getBooks,
 //   deleteBook,
 //   addBook
-getallplayers,
+getallplayers,authenticate,signup,
 getallteams,getteam,addTeam,addPlayer,addMatch,
 getallmatches,deleteplayer,deletematch,deleteteam,
 getplayer,getmatch,updateMatch,updateimage
@@ -30,6 +30,17 @@ getplayer,getmatch,updateMatch,updateimage
 //     headers: { 'Content-type': 'application/json' }
 //   })
 // }
+function authenticate(username, password) {
+  return instance.post('/auth/authenticate', { username, password }, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
+
+function signup(user) {
+  return instance.post('/auth/signup', user, {
+    headers: { 'Content-type': 'application/json' }
+  })
+}
 
 function getallplayers() {
   return instance.get('/players')

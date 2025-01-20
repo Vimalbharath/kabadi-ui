@@ -15,21 +15,30 @@ export const api = {
 getallplayers,authenticate,signup,
 getallteams,getteam,addTeam,addPlayer,addMatch,
 getallmatches,deleteplayer,deletematch,deleteteam,
-getplayer,getmatch,updateMatch,updateimage
+getplayer,getmatch,updateMatch,updateimage,
+numberOfUsers,getUsers,deleteUser
 }
 
 
-// function authenticate(username, password) {
-//   return instance.post('/auth/authenticate', { username, password }, {
-//     headers: { 'Content-type': 'application/json' }
-//   })
-// }
+function numberOfUsers() {
+  return instance.get('/public/numberOfUsers')
+}
 
-// function signup(user) {
-//   return instance.post('/auth/signup', user, {
-//     headers: { 'Content-type': 'application/json' }
-//   })
-// }
+
+
+function getUsers(user, username) {
+  const url = username ? `/api/users/${username}` : '/api/users'
+  return instance.get(url, {
+    headers: { 'Authorization': basicAuth(user) }
+  })
+}
+
+
+function deleteUser(user, username) {
+  return instance.delete(`/api/users/${username}`, {
+    headers: { 'Authorization': basicAuth(user) }
+  })
+}
 function authenticate(username, password) {
   return instance.post('/auth/authenticate', { username, password }, {
     headers: { 'Content-type': 'application/json' }
@@ -42,12 +51,16 @@ function signup(user) {
   })
 }
 
-function getallplayers() {
-  return instance.get('/players')
+function getallplayers(user) {
+  return instance.get('/players', {
+    headers: { 'Authorization': basicAuth(user) }
+  })
 }
 
-function getallteams() {
-  return instance.get('/teams')
+function getallteams(user) {
+  return instance.get('/teams', {
+    headers: { 'Authorization': basicAuth(user) }
+  })
 }
 function getteam(teamid) {
   return instance.get(`/team/${teamid}`)
@@ -59,8 +72,10 @@ function getmatch(matchid) {
   return instance.get(`/match/${matchid}`)
 }
 
-function getallmatches() {
-  return instance.get('/matchs')
+function getallmatches(user) {
+  return instance.get('/matchs', {
+    headers: { 'Authorization': basicAuth(user) }
+  })
 }
 
 function addTeam(team) {
@@ -143,8 +158,8 @@ const instance = axios.create({
   baseURL: config.url.API_BASE_URL
 })
 
-// -- Helper functions
+//-- Helper functions
 
-// function basicAuth(user) {
-//   return `Basic ${user.authdata}`
-// }
+function basicAuth(user) {
+  return `Basic ${user.authdata}`
+}

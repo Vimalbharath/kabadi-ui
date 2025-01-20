@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
 import { api } from '../misc/api';
 import { handleLogError } from '../misc/Helpers';
 
 const Signup = () => {
   const Auth = useAuth()
+   const isLoggedIn = Auth.userIsAuthenticated();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null); // Use a single state for error message
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const { login } = useAuth(); // Assuming login function from AuthContext
 
   const handleInputChange = (event) => {
@@ -52,7 +53,12 @@ const Signup = () => {
       const authenticatedUser = { id, name, role, authdata }
 
       Auth.userLogin(authenticatedUser)
-      navigate('/'); // Redirect to home page
+     setUsername('')
+      setPassword('')
+      setName('')
+      setEmail('')
+      setError(false)
+      
     } catch (error) {
       handleLogError(error);
       let errorMessage = 'Signup failed.';
@@ -63,6 +69,12 @@ const Signup = () => {
       setError(errorMessage);
     }
   };
+   
+  if (isLoggedIn) {
+      return <Navigate to={'/'} />
+   }
+
+ 
 
   return (
     <div className="signup-container">

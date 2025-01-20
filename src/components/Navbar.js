@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext'
 import '../Navbar.css'; // Import the CSS file
+import AdminPage from './AdminPage';
 
 function Navbar() {
 
@@ -23,6 +24,7 @@ function Navbar() {
     <nav className="navbar">
        <div header style={logoutMenuStyle()}>{`Hi ${getUserName()}`}</div>
           <div as={Link} to="/" style={logoutMenuStyle()} onClick={logout}>Logout</div>
+          <AdminPage/>
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/" className="nav-link">

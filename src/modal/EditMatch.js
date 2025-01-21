@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useGlobalContext } from './context';
 import {  useNavigate, useParams } from 'react-router-dom';
 import { api } from '../misc/api';
+import {useAuth} from '../Context/AuthContext';
 
 const EditMatch = ({matchid}) => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
  const navigate = useNavigate();
    const {  isEditOpen } = useGlobalContext();
  const { isEditMatchesOpen, closeEditMatches } = useGlobalContext();
@@ -23,7 +26,7 @@ const EditMatch = ({matchid}) => {
     e.preventDefault();
 
     try {
-      const response = await api.updateMatch(matchData,matchid); 
+      const response = await api.updateMatch(matchData,matchid,user); 
       console.log('Match updated successfully:', response.data);
       closeEditMatches();
       navigate('/matches'); // Redirect to the matches list after successful addition

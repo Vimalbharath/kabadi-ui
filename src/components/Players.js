@@ -2,6 +2,7 @@ import React from 'react';
 import { useState,useEffect } from 'react';
 import { api } from '../misc/api'
 import Player from './Player';
+import {useAuth} from '../Context/AuthContext';
 // const url = 'http://localhost:8080/players'
 // const [loading,setLoading]=useState(true);
 
@@ -34,13 +35,15 @@ import Player from './Player';
 //  return (<h4>Hello Vimalbharath</h4>); 
 // }
 const Players = () => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
 
   const [tours,setTours]=useState([]);
 
   const handlegetallplayers = async () => {
     try {
       // setIsBooksLoading(true)
-      const response = await api.getallplayers();
+      const response = await api.getallplayers(user);
       console.log(response.data);
        setTours(response.data)
     } catch (error) {

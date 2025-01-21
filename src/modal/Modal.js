@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useGlobalContext } from './context';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../misc/api';
+import {useAuth} from '../Context/AuthContext';
 // import { FaTimes } from 'react-icons/fa';
 const Modal = () => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
   const { isModalOpen, closeModal } = useGlobalContext();
   const navigate = useNavigate(); 
 
@@ -23,7 +26,7 @@ const Modal = () => {
     e.preventDefault();
 
     try {
-      const response = await api.addTeam(teamData); 
+      const response = await api.addTeam(teamData,user); 
       console.log('Team added successfully:', response.data);
       navigate('/teams'); // Redirect to the teams list after successful addition
     } catch (error) {

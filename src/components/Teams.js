@@ -5,15 +5,18 @@ import { api } from '../misc/api'
 import { useGlobalContext } from '../modal/context';
 import Modal from '../modal/Modal';
 import AddMatch from '../modal/AddMatch';
+import  { useAuth }  from '../Context/AuthContext';
 
 const Teams = () => {
+  const Auth = useAuth()
+  const user = Auth.getUser()
 const {  openModal,openAddMatches } = useGlobalContext();
 
   const [teams,setTeams]=useState([]);
 
   const handlegetallteams = async () => {
     try {
-      const response = await api.getallteams();
+      const response = await api.getallteams(user);
       console.log(response.data);
       setTeams(response.data)
     } catch (error) {

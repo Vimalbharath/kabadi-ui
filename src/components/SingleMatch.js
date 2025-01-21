@@ -4,16 +4,18 @@ import { api } from '../misc/api';
 import { useState } from 'react';
 import { useGlobalContext } from '../modal/context';
 import EditMatch from '../modal/EditMatch';
+import {useAuth} from '../Context/AuthContext';
 
 const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, team2score ,handlegetallmatches}) => {
 
   const {  openEditMatches } = useGlobalContext();
- 
+  const Auth = useAuth()
+  const user = Auth.getUser()
 
    const handledeletematch = async () => {
     try {
      
-      const response = await api.deletematch(matchid);
+      const response = await api.deletematch(matchid,user);
       console.log('deleted')
       handlegetallmatches();
     } catch (error) {

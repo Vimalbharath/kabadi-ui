@@ -4,14 +4,17 @@ import { useState,useEffect } from 'react';
 import { api } from '../misc/api'
 import AddMatch from '../modal/AddMatch';
 import { useGlobalContext } from '../modal/context';
+import {useAuth} from '../Context/AuthContext';
 
 const Matches = () => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
   const {  openAddMatches } = useGlobalContext();
  const [matches,setMatches]=useState([]);
 
   const handlegetallmatches = async () => {
     try {
-      const response = await api.getallmatches();
+      const response = await api.getallmatches(user);
       console.log(response.data);
       setMatches(response.data)
     } catch (error) {

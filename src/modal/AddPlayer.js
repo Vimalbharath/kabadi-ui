@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useGlobalContext } from './context';
 import {  useNavigate, useParams } from 'react-router-dom';
 import { api } from '../misc/api';
+import {useAuth} from '../Context/AuthContext';
 // import { FaTimes } from 'react-icons/fa';
 const AddPlayer = () => {
+    const Auth = useAuth()
+  const user = Auth.getUser()
   const { isAddPlayerOpen, closeAddPlayer } = useGlobalContext();
   const navigate = useNavigate(); 
 
@@ -30,7 +33,7 @@ const AddPlayer = () => {
       // Add teamid to the player data
       const newPlayerData = { ...playerData, teamid: teamid }; 
 
-      const response = await api.addPlayer(newPlayerData,teamid); 
+      const response = await api.addPlayer(newPlayerData,teamid,user); 
       console.log('Player added successfully:', response.data);
       closeAddPlayer()
       navigate(`/team/${teamid}`); // Redirect to the specific team page

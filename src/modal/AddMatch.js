@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useGlobalContext } from './context';
 import {  useNavigate, useParams } from 'react-router-dom';
 import { api } from '../misc/api';
+import {useAuth} from '../Context/AuthContext';
 
 const AddMatch = ({teams}) => {
+ const Auth = useAuth()
+  const user = Auth.getUser()
  const navigate = useNavigate();
  const { isAddMatchesOpen, closeAddMatches } = useGlobalContext();
   const [matchData, setMatchData] = useState({
@@ -30,7 +33,7 @@ const AddMatch = ({teams}) => {
     e.preventDefault();
 
     try {
-      const response = await api.addMatch(matchData,matchDataout.team1id,matchDataout.team2id); 
+      const response = await api.addMatch(matchData,matchDataout.team1id,matchDataout.team2id,user); 
       console.log('Match added successfully:', response.data);
       navigate('/matches'); // Redirect to the matches list after successful addition
     } catch (error) {

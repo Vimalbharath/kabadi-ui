@@ -3,15 +3,18 @@ import pic from '../images/default.png'
 import { api } from '../misc/api'
 import '../App.css';
 import { Button } from 'bootstrap';
+import {useAuth} from '../Context/AuthContext';
 
 
 const Player = ({ playerid, name, age, image, weight, address ,handlegetallplayers}) => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
  const path=process.env.PUBLIC_URL + `/images/${playerid}.jpeg`
 
   const handledeleteplayer = async () => {
     try {
      
-      const response = await api.deleteplayer(playerid);
+      const response = await api.deleteplayer(playerid,user);
       // console.log(response.data);
       //  setTours(response.data)
       console.log('deleted')
@@ -26,7 +29,7 @@ const Player = ({ playerid, name, age, image, weight, address ,handlegetallplaye
   const handleupdateimage = async () => {
     try {
      
-      const response = await api.updateimage(playerid);
+      const response = await api.updateimage(playerid,user);
       // console.log(response.data);
       //  setTours(response.data)
       console.log('image updated')

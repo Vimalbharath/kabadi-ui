@@ -22,9 +22,9 @@ function Navbar() {
   }
   return (
     <nav className="navbar">
-       <div header style={logoutMenuStyle()}>{`Hi ${getUserName()}`}</div>
+       <div style={logoutMenuStyle()}>{`Hi ${getUserName()}`}</div>
           <div as={Link} to="/" style={logoutMenuStyle()} onClick={logout}>Logout</div>
-          <AdminPage/>
+          {/* <AdminPage/> */}
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/" className="nav-link">

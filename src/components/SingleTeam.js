@@ -4,16 +4,19 @@ import { api } from '../misc/api'
 import Player from './Player';
 import { useGlobalContext } from '../modal/context';
 import AddPlayer from '../modal/AddPlayer';
+import {useAuth} from '../Context/AuthContext';
 
 
 const SingleTeam = () => {
+   const Auth = useAuth()
+  const user = Auth.getUser()
   const {  openAddPlayer } = useGlobalContext();
     const { teamid } = useParams();
     const [selectedTeam,setTeams]=useState([]);
   const handledeleteteam = async () => {
     try {
      
-      const response = await api.deleteteam(teamid);
+      const response = await api.deleteteam(teamid,user);
       // console.log(response.data);
       //  setTours(response.data)
       console.log('deleted')
@@ -27,7 +30,7 @@ const SingleTeam = () => {
   }
   const handlegetteam = async () => {
     try {
-      const response = await api.getteam(teamid);
+      const response = await api.getteam(teamid,user);
       console.log(response.data);
       setTeams(response.data)
      

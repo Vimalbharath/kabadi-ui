@@ -34,14 +34,16 @@ const {  openModal,openAddMatches } = useGlobalContext();
       <h2>Teams</h2>
       <AddMatch teams={teams}/>
      
-       <button onClick={openAddMatches} className='btn'>
+       <button style={Auth.adminStyle()} onClick={openAddMatches} className='btn'>
         Add Match
       </button>
       {console.log(teams)}
       <Modal/>
-       <button onClick={openModal} className='btn'>
+    
+      <button style={Auth.adminStyle()} onClick={openModal} className='btn'>
         Add Team
-      </button>
+      </button> 
+      
     </div>
       <div>
         {teams.map((team)=>{

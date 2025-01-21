@@ -49,7 +49,7 @@ const SingleTeam = () => {
 
 
  <div>
-   <button type="button" className='btn'onClick={() => alert(`Attempted to Delete ${name} : ID ${teamid}`, handledeleteteam(teamid))
+   <button type="button" style={Auth.adminStyle()} className='btn'onClick={() => alert(`Attempted to Delete ${name} : ID ${teamid}`, handledeleteteam(teamid))
     }>Delete Team</button>
   <h2> {teamid}</h2>   
      <h2> {name}</h2>
@@ -57,7 +57,7 @@ const SingleTeam = () => {
      <h2> {number}</h2>
      <h2> {village}</h2>
       <AddPlayer/>
-       <button onClick={openAddPlayer} className='btn'>
+       <button style={Auth.adminStyle()} onClick={openAddPlayer} className='btn'>
         Add Player
       </button>
           {selectedTeam.players && selectedTeam.players.length > 0 && ( // Check if players exist and have elements

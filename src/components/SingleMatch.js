@@ -48,12 +48,12 @@ const SingleMatch = ({ matchid, date, ground, stage, team1, team2, team1score, t
         Score: {team1score} - {team2score}
       </p>
 
-       <button className='btn' type="button" onClick={() => alert(`Deleted ID ${matchid}`,
+       <button style={Auth.adminStyle()} className='btn' type="button" onClick={() => alert(`Deleted ID ${matchid}`,
         handledeletematch(matchid))
     }>Delete</button>
         <EditMatch matchid={matchid}/>
      
-       <button onClick={openEditMatches} className='btn'>
+       <button style={Auth.adminStyle()} onClick={openEditMatches} className='btn'>
         Edit Match
       </button>
     </div>

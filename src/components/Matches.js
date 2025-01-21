@@ -14,7 +14,7 @@ const Matches = () => {
 
   const handlegetallmatches = async () => {
     try {
-      const response = await api.getallmatches(user);
+      const response = await api.getallmatches();
       console.log(response.data);
       setMatches(response.data)
     } catch (error) {

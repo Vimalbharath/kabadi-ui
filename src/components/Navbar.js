@@ -5,7 +5,7 @@ import '../Navbar.css'; // Import the CSS file
 import AdminPage from './AdminPage';
 
 function Navbar() {
-
+  const Auth = useAuth();
    const { getUser, userIsAuthenticated, userLogout } = useAuth()
 
   const logout = () => {
@@ -26,6 +26,11 @@ function Navbar() {
           <div as={Link} to="/" style={logoutMenuStyle()} onClick={logout}>Logout</div>
           {/* <AdminPage/> */}
       <ul className="nav-list">
+        <li className="nav-item">
+          <Link to="/userstable" style={Auth.adminStyle()} className="nav-link">
+            UsersTable
+          </Link>
+        </li>
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home

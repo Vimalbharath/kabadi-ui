@@ -11,6 +11,7 @@ import Error from './components/Error';
 import SingleTeam from './components/SingleTeam';
 import { BrowserRouter as Router,Routes,Navigate,Route} from 'react-router-dom';
 import { AuthProvider } from './Context/AuthContext'
+import AdminPage from './components/AdminPage';
 function App() {
   return (
     <AuthProvider>
@@ -18,6 +19,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='userstable' element={<AdminPage />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
           <Route path='players' element={<Players />} />

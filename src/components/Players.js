@@ -43,7 +43,7 @@ const Players = () => {
   const handlegetallplayers = async () => {
     try {
       // setIsBooksLoading(true)
-      const response = await api.getallplayers(user);
+      const response = await api.getallplayers();
       console.log(response.data);
        setTours(response.data)
     } catch (error) {

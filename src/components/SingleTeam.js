@@ -30,7 +30,7 @@ const SingleTeam = () => {
   }
   const handlegetteam = async () => {
     try {
-      const response = await api.getteam(teamid,user);
+      const response = await api.getteam(teamid);
       console.log(response.data);
       setTeams(response.data)
      

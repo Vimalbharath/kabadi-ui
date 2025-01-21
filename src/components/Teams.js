@@ -16,7 +16,7 @@ const {  openModal,openAddMatches } = useGlobalContext();
 
   const handlegetallteams = async () => {
     try {
-      const response = await api.getallteams(user);
+      const response = await api.getallteams();
       console.log(response.data);
       setTeams(response.data)
     } catch (error) {

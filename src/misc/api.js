@@ -51,21 +51,15 @@ function signup(user) {
   })
 }
 
-function getallplayers(user) {
-  return instance.get('/admin/players', {
-    headers: { 'Authorization': basicAuth(user) }
-  })
+function getallplayers() {
+  return instance.get('/public/players')
 }
 
 function getallteams(user) {
-  return instance.get('/admin/teams', {
-    headers: { 'Authorization': basicAuth(user) }
-  })
+  return instance.get('/public/teams')
 }
 function getteam(teamid,user) {
-  return instance.get(`/admin/team/${teamid}`, {
-    headers: { 'Authorization': basicAuth(user) }
-  })
+  return instance.get(`/public/team/${teamid}`)
 }
 function getplayer(playerid,user) {
   return instance.get(`/admin/team/${playerid}`, {
@@ -78,10 +72,8 @@ function getmatch(matchid,user) {
   })
 }
 
-function getallmatches(user) {
-  return instance.get('admin/matchs', {
-    headers: { 'Authorization': basicAuth(user) }
-  })
+function getallmatches() {
+  return instance.get('/public/matchs')
 }
 
 function addTeam(team,user) {
